@@ -7,7 +7,7 @@ const Revenges = () => {
       <div style={{ display: "flex", justifyContent: "center" }}>
         ...טאב בהכנה
       </div>
-      <img src={pic} className="picBig" />
+      <img src={pic} alt="XXX" className="picBig" />
     </div>
   );
 };

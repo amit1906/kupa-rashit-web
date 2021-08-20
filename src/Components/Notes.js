@@ -108,7 +108,7 @@ const Notes = () => {
           הוסף משפט
         </button>
 
-        <img src={pic} className="pic" />
+        <img src={pic} alt="XXX" className="pic" />
       </div>
 
       <div className="container">{notesDiv}</div>
