@@ -121,8 +121,8 @@ const Notes = () => {
         <select
           ref={input2Ref}
           onChange={(e) => {
-            setCharacter(e.target.value);
             selectPic(e.target.value);
+            setCharacter(e.target.value);
             setValid2(true);
           }}
           className={[!valid2 && 'invalid', 'input select'].join(' ')}
