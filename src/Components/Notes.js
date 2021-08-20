@@ -3,7 +3,6 @@ import pic from "../pics/p1.jpg";
 import { firestore as db } from "../firebase";
 
 const Notes = () => {
-  const collection = db.collection("notes");
   const characters = [
     "ראמזי",
     "כוכבה",
@@ -23,19 +22,23 @@ const Notes = () => {
   const input1Ref = useRef();
   const input2Ref = useRef();
 
-  useEffect(() => {
-    const data = collection.get().then(() => {
-      data.forEach((doc) => {
-        setNotes((notes) =>
-          notes.concat({
-            id: doc.id,
-            ...doc.data(),
-          })
-        );
+  useEffect(
+    (notes) => {
+      const collection = db.collection("notes");
+      const data = collection.get().then(() => {
+        data.forEach((doc) => {
+          setNotes((notes) =>
+            notes.concat({
+              id: doc.id,
+              ...doc.data(),
+            })
+          );
+        });
+        console.log("notes: ", notes);
       });
-      console.log("notes: ", notes);
-    });
-  }, [added]);
+    },
+    [added]
+  );
 
   let notesDiv = notes.map((note) => (
     <div key={note.id}>
@@ -52,6 +55,8 @@ const Notes = () => {
   }
 
   const addNoteHandle = async (e) => {
+    const collection = db.collection("notes");
+
     let isValid = note.trim().length > 2 && character.trim() !== "";
     setValid1(note.trim().length > 2);
     setValid2(character.trim() !== "");
