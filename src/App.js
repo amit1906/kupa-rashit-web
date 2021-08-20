@@ -1,17 +1,25 @@
 import "./App.css";
 import Header from "./Components/Header";
 import Fotter from "./Components/Fotter";
-import { Switch, Route } from "react-router-dom";
-import Notes from "./Components/Notes";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./Components/Home";
+import Notes from "./Components/Notes";
+import Revenges from "./Components/Revenges";
+import Characters from "./Components/Characters";
 import React from "react";
 
 function App() {
   return (
     <React.Fragment>
       <Header />
-      <Route path="/" component={Home} />
+      <Route path="/home" component={Home} />
+      <Route path="/revenges" component={Revenges} />
+      <Route path="/characters" component={Characters} />
       <Route path="/sentences" component={Notes} />
+
+      <Route path="/" dir>
+        <Redirect to="/home" />
+      </Route>
       <Fotter />
     </React.Fragment>
   );

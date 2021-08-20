@@ -4,7 +4,15 @@ import { firestore as db } from "../firebase";
 
 const Notes = () => {
   const collection = db.collection("notes");
-  const characters = ["ראמזי", "כוכבה", "שירה", "אסתי", "ניסים", "אנטולי"];
+  const characters = [
+    "ראמזי",
+    "כוכבה",
+    "שירה",
+    "אסתי",
+    "ניסים",
+    "אנטולי",
+    "אמנון",
+  ];
 
   const [valid1, setValid1] = useState(true);
   const [valid2, setValid2] = useState(true);
@@ -100,7 +108,7 @@ const Notes = () => {
           הוסף משפט
         </button>
 
-        <img src={pic} alt="XXX" className="pic" />
+        <img src={pic} className="pic" />
       </div>
 
       <div className="container">{notesDiv}</div>

@@ -1,7 +1,7 @@
 import React from "react";
-import pic from "../pics/shira2.jpg";
+import pic from "../pics/ramzi1.jpg";
 
-const Home = () => {
+const Characters = () => {
   return (
     <div className="container">
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -12,4 +12,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Characters;
