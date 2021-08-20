@@ -23,17 +23,18 @@ const Notes = () => {
   const input1Ref = useRef();
   const input2Ref = useRef();
 
-  useEffect(async () => {
-    const data = await collection.get();
-    data.forEach((doc) => {
-      setNotes((notes) =>
-        notes.concat({
-          id: doc.id,
-          ...doc.data(),
-        })
-      );
+  useEffect(() => {
+    const data = collection.get().then(() => {
+      data.forEach((doc) => {
+        setNotes((notes) =>
+          notes.concat({
+            id: doc.id,
+            ...doc.data(),
+          })
+        );
+      });
+      console.log("notes: ", notes);
     });
-    console.log("notes: ", notes);
   }, [added]);
 
   let notesDiv = notes.map((note) => (
