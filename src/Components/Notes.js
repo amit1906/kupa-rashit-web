@@ -24,8 +24,9 @@ const Notes = () => {
 
   useEffect(
     (notes) => {
-      const collection = db.collection("notes");
-      const data = collection.get().then(() => {
+      const getData = async () => {
+        const collection = db.collection("notes");
+        const data = await collection.get();
         data.forEach((doc) => {
           setNotes((notes) =>
             notes.concat({
@@ -35,7 +36,8 @@ const Notes = () => {
           );
         });
         console.log("notes: ", notes);
-      });
+      };
+      getData();
     },
     [added]
   );
@@ -56,7 +58,6 @@ const Notes = () => {
 
   const addNoteHandle = async (e) => {
     const collection = db.collection("notes");
-
     let isValid = note.trim().length > 2 && character.trim() !== "";
     setValid1(note.trim().length > 2);
     setValid2(character.trim() !== "");
